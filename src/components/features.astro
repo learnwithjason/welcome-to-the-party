@@ -1,0 +1,56 @@
+---
+import Feature from './feature.astro';
+import heart from '../images/feature-heart.jpg';
+
+const features = [
+  {
+    image: {
+      src: 'https://images.unsplash.com/photo-1578625155481-7bc40a6481b6?q=80&w=350&h=350&auto=format&fit=crop&crop=entropy&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'A calendar page on a white background',
+    },
+    heading: 'Create Fun Events',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nibh feugiat, consectetur nibh ac,',
+    url: '#create-events',
+  },
+  {
+    image: {
+      src: 'https://images.unsplash.com/photo-1516962126636-27ad087061cc?q=80&w=350&h=350&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Polaroid camera on a white background',
+    },
+    heading: 'Capture Memories',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nibh feugiat, consectetur nibh ac,',
+    url: '#capture-memories',
+  },
+  {
+    image: {
+      src: heart.src,
+      alt: 'a heart on a white background',
+    },
+    heading: 'Make New Friends',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nibh feugiat, consectetur nibh ac,',
+    url: '#make-new-friends',
+  },
+];
+---
+
+<section class="features">
+  {features.map((feature) => (
+    <Feature {...feature} />
+  ))}
+</section>
+
+<style>
+  .features {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3rem auto;
+    max-width: min(750px, 90vw);
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
+  }
+</style>

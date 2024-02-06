@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section class="hero">
+	<div class="content">
+		<h1>A Wonderful Headline for a Wonderful Product (Probably)</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu nibh feugiat, consectetur nibh ac, ornare purus. Sed laoreet nunc in odio aliquet ultrices.</p>
+		<p>
+			<a href="#newsletter" class="button">Learn more &rarr;</a>
+		</p>
+	</div>
+	<Image
+    class="image"
+		src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1440&h=750&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		alt="A group of friends at an outdoor dinner table"
+		width="1440"
+		height="750"
+	/>
+</section>
+
+<style>
+  .hero {
+    align-items: end;
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+    padding: 2rem;
+    padding-block-start: 20dvh;
+    position: relative;
+
+    & .content {
+      color: var(--color-bg);
+      container-type: inline-size;
+      margin-inline: auto;
+      width: 100%;
+      position: relative;
+      text-wrap: balance;
+      z-index: 10;
+
+      & h1 {
+        font-size: clamp(1.25rem, 9cqw, 2.25rem);
+      }
+
+      & a:not(.button) {
+        color: inherit;
+        font-weight: 600;
+      }
+    }
+
+    & .image {
+      height: 100%;
+      inset: 0;
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+
+    &::after {
+      background-image: linear-gradient(
+        to top in oklch,
+        color-mix(in oklch, var(--color-heading), transparent 20%) 60%,
+        color-mix(in oklch, var(--color-heading), transparent 100%) 90%
+      );
+      content: '';
+      inset: 0;
+      mix-blend-mode: multiply;
+      position: absolute;
+      z-index: 2;
+    }
+    
+    @media (min-width: 750px) {
+      aspect-ratio: 16 / 7;
+
+      & .content {
+        margin-inline-end: 4rem;
+        width: 40%;
+      }
+
+      &::after {
+
+      background-image: linear-gradient(
+        to left in oklch,
+        color-mix(in oklch, var(--color-heading), transparent 20%) 50%,
+        color-mix(in oklch, var(--color-heading), transparent 100%) 80%
+      );
+      }
+    }
+  }
+</style>

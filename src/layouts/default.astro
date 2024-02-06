@@ -1,0 +1,162 @@
+---
+export interface Props {
+	/**
+	 * The title shown in the site meta
+	 */
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<a rel="home" href="/">
+				<span class="name">NeverGhosted</span>
+				<span class="tagline">Party Planning for Maximum Friendship</span>
+			</a>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer>
+			<p>
+				<a href="https://astro.party">part of Astro Party</a>
+				<a href="https://jason.energy/links">created by Jason Lengstorf</a>
+				<a href="https://github.com/learnwithjason/welcome-to-the-party"
+					>source code</a
+				>
+			</p>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--color-brand: #0700eb;
+		--color-bg: #fefbfd;
+		--color-bg-muted: #f3e8f0;
+		--color-heading: #030137;
+		--color-text: #35345a;
+		--color-text-muted: #4c4c61;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		color: var(--color-text);
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol';
+		font-size: 18px;
+		line-height: 1.45;
+	}
+
+	body {
+		background: var(--color-bg);
+		margin: 0;
+	}
+
+	:is(h1, h2, h3) {
+		font-family: nunito, sans-serif;
+		line-height: 1.1;
+		margin: 0;
+	}
+
+	p {
+		margin: 0;
+
+		&:not(:first-child) {
+			margin-block-start: 1rem;
+		}
+	}
+
+	.button {
+		background: var(--color-brand);
+		border: 1px solid var(--color-heading);
+		border-radius: 0.125rem;
+		color: var(--color-bg);
+		display: inline-block;
+		font-family: nunito, sans-serif;
+		font-size: 1rem;
+		font-weight: 900;
+		line-height: 1.1;
+		padding: 0.5rem 1.25rem;
+		text-decoration: none;
+		text-transform: uppercase;
+		transform-origin: center;
+		transition: 0.1s all linear;
+
+		&:is(:hover, :focus) {
+			background: color-mix(in oklch, var(--color-brand), var(--color-bg) 10%);
+			transform: scale(1.02);
+		}
+	}
+</style>
+
+<style>
+	header {
+		background: var(--color-brand);
+		color: var(--color-bg);
+		padding: 1rem min(2rem, 5vw);
+
+		& a {
+			color: inherit;
+			display: inline-block;
+			text-decoration: none;
+			text-align: right;
+
+			& .name {
+				font-family: 'Nunito', sans-serif;
+				font-optical-sizing: auto;
+				font-size: 2.5rem;
+				font-style: normal;
+				font-weight: 800;
+				line-height: 0.9;
+			}
+
+			& .tagline {
+				display: block;
+				font-size: 0.52rem;
+				letter-spacing: 0.25em;
+				line-height: 1;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	footer {
+		background: var(--color-bg-muted);
+		color: var(--color-text-muted);
+		font-size: 0.875rem;
+		padding: 1rem min(2rem, 5vw);
+		text-align: center;
+
+		& a {
+			color: inherit;
+			text-decoration: none;
+
+			&:is(:hover, :focus) {
+				text-decoration: underline;
+			}
+		}
+	}
+</style>

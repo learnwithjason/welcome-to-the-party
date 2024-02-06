@@ -1,0 +1,45 @@
+---
+import { type ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+export interface Props {
+	image: {
+		src: string;
+		alt: string;
+	};
+	heading: string;
+	text: string;
+	url: string;
+}
+
+const { image, heading, text, url } = Astro.props;
+---
+
+<div class="feature">
+	<a href={url} class="image-link">
+		<Image src={image.src} alt={image.alt} height="350" width="350" />
+	</a>
+	<h3>{heading}</h3>
+	<p>
+		{text}
+	</p>
+	<p>
+		<a href={url} class="button">Check It Out</a>
+	</p>
+</div>
+
+<style>
+	.feature {
+		max-width: 250px;
+	}
+
+	.image-link {
+		display: block;
+
+		& img {
+			aspect-ratio: 1;
+			height: auto;
+			width: 100%;
+		}
+	}
+</style>
